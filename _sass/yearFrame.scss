@@ -1,0 +1,38 @@
+  /* 섹션 */
+  section.year-block{
+    min-height:100vh;scroll-snap-align:start;
+    padding:6rem 1rem 4rem;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  h1.year-title{margin:0 0 3rem;color:var(--primary);font-size:2.3rem;font-weight:700;}
+
+  /* 타임라인 리스트 */
+  .timeline{width:100%;max-width:940px;}
+  .timeline ul{list-style:none;margin:0;padding:0;}
+  .timeline li{
+    position:relative;display:flex;gap:1.4rem;margin:0 0 3rem;
+    padding-left:calc(var(--line-center) + var(--dot-size) + 1rem);
+  }
+  .timeline li:last-child{margin-bottom:0;}
+  .timeline li::before{
+    content:"";position:absolute;z-index:1;
+    left:calc(var(--line-center) - var(--dot-size)/2);
+    top:calc(50% - var(--dot-size)/2);
+    fill: #f4a300;
+    background-color: #f4a300;
+    width:var(--dot-size);height:var(--dot-size);
+    border-radius:50%;
+    box-shadow:0 0 0 4px var(--primary);
+  }
+
+  /* 카드 */
+  .card-img{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 0 6px rgba(0,0,0,.15);}
+  .card-name{font-size:1.1rem;font-weight:700;color:var(--primary);margin:.1rem 0;}
+  .card-title{font-size:.9rem;font-style:italic;color:#555;}
+  .card-bio{font-size:.9rem;line-height:1.4;margin:.5rem 0;}
+  .card-link{font-size:.8rem;color:var(--primary);text-decoration:none;}
+
+  @media(max-width:680px){
+    :root{--line-left:60px}
+    .card-img{width:90px;height:90px}
+  }

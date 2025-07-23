@@ -1,0 +1,32 @@
+- year: 2024
+  speakers:
+    - name: "구재현"
+      photo: "/assets/speakers/2024/스크린샷 2024-06-30 163742.png"
+      title: "MIT 석사과정"
+      bio: |
+        • ....  
+        • ㅇㄹㄴㅇ  
+        • ㄴㅇㄹㄴㅇㄹ
+      link: "https://example.com/koo3"
+
+- year: 2025
+  speakers:
+    - name: "구재현"
+      photo: "/assets/speakers/2025/balloons-9342556_1280.png"
+      title: "MIT 석사과정"
+      bio: |
+        • MIT 석사과정  
+        • ....
+      link: "https://example.com/koo1"
+    - name: "구재현"
+      photo: "/assets/speakers/2025/스크린샷 2025-07-17 234032.png"
+      title: "MIT 석사과정"
+      bio: |
+        • 에ㄷㄷ나다어개ㅓㄴ ㄴ더 ㄴ 개나다개넣거 ㅗ  
+        • 엘나 | ㅇ러 | ㄴ더 | ㅏㄴ드  
+        • 으에에
+        • 으에에
+        • 으에에
+        • 으에에
+        • 으에에
+      link: "https://example.com/koo2"
