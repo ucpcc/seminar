@@ -1,0 +1,18 @@
+{% assign s = include.seminar %}
+
+<div class="SeminarElement header">
+  <div class="Left header">{{ s.year }}</div>
+  <div class="Partition header"></div>
+  <div class="Middle header">
+    {% if s.schedule %}{{ s.schedule }}{% endif %}
+    <br />
+    {% if s.apply_period %}신청 기간: {{ s.apply_period }}{% endif %}
+  </div>
+  <div class="Right header">
+    {% if s.apply_status == "open" %}
+      <a href="{{ y.apply_link }}" class="apply" target="_blank" rel="noopener">신청하기</a>
+    {% else %}
+      <span class="apply disabled">신청마감</span>
+    {% endif %}
+  </div>
+</div>

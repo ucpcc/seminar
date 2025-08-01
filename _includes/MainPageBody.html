@@ -1,0 +1,6 @@
+<div class="MainPageBody">
+  {% assign years = site.data.section | sort_natural: 'year' | reverse %}
+  {% for y in years %}
+    {% include SeminarFrame.html year=y %}
+  {% endfor %}
+</div>

@@ -1,0 +1,25 @@
+{% assign s = include.section %}
+
+<div class="SeminarElement section">
+  <div class="Left section">{{ s.time }}</div>
+  <div class="Partition section"></div>
+  <div class="Middle section">
+    {% if s.photo %} <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="Photo"> {% endif %}
+    {% if s.sessionPhoto %} <img src="{{ s.sessionPhoto | relative_url }}" alt="{{ s.name }}" class="sessionPhoto"> {% endif %}
+    {% if s.title %}
+      <div class="TextFrame">
+        <div class="Text title">{{ s.title }}</div> 
+        {% if s.abstr %} <div class="Text abstr">{{ s.abstr | markdownify }}</div> {% endif %}
+        {% if s.name %} <div class="Text name">연사 | {{ s.name }}</div> {% endif %}
+        {% if s.intro %} <div class="Text intro">{{ s.intro | markdownify }}</div> {% endif %}
+      </div>
+    {% endif %}
+    {% if s.session %}
+      <div class="SessionFrame">
+        <div class="Text session">{{s.session}}</div>
+        {% if s.description %} <div class="Text description">{{s.description}}</div> {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="Right section"></div>
+</div>

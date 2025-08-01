@@ -1,0 +1,64 @@
+:root{
+  --primary:#f4a300;
+  --dot:12px;
+  --lineWeight:4px;
+  --img:120px;
+  --frac:1;
+}
+
+/* -------- 기본 레이아웃 -------- */
+html,body{
+  height:100%;
+  padding:0;
+  scroll-behavior:smooth;
+  font-family:Pretendard,apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+/* ===== 헤더 ===== */
+.Main{transition: padding 0.3s ease;}
+
+.MainPageHeader {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  background:#fff;
+  box-shadow:0 1px 4px rgba(0,0,0,.07);
+}
+.MainPageHeader.expanded {
+  padding:calc(1rem * var(--frac)) 0;
+  gap: calc(0.5rem * var(--frac));
+}
+.MainPageHeader.shrunk {
+  padding:calc(1rem * var(--frac)) 0; /* 타이틀 패딩만 제거, 네비 자리 확보 */
+}
+.MainPageHeader.shrunk .MainTitle {
+  display: none;
+}
+.MainPageHeader.MainTitle {
+  margin:0;
+  font-size:calc(2rem * var(--frac));
+}
+
+.Nav{
+  padding:0;
+  display:flex;
+  gap:calc(4rem * var(--frac)); 
+}
+.NavElement{ font-size: calc(1.2rem * var(--frac)); font-weight:600; color:#333; text-decoration:none; }
+.NavElement.active{ border-bottom:calc(3px * var(--frac)) solid var(--primary); }
+
+.MainPageBody{
+  scroll-snap-type: y mandatory; /* 세로 방향 스냅을 강제 */
+  overflow-y: scroll;
+}
+
+.SeminarFrame{ scroll-snap-align:start; padding:0 0; scroll-margin-top: 80px; }
+
+/* -------- 반응형 -------- */
+@media(max-width:920px){
+  :root{ 
+    --frac:0.75;
+    --dot:calc(12px * var(--frac));
+    --lineWeight:calc(4px * var(--frac));
+    --img:calc(120px * var(--frac));
+  }
+}

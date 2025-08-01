@@ -1,0 +1,74 @@
+<header class="MainPageHeader">
+  <h1 class="MainTitle">전국 대학생 프로그래밍 대회 동아리 연합 세미나</h1>
+  <nav class="Nav">
+    {% assign nav = site.data.section | sort_natural: 'year' %}
+    {% for y in nav %}
+      <a href="#y{{ y.year }}" class="NavElement">{{ y.year }}</a>
+    {% endfor %}
+  </nav>
+</header>
+
+  <!-- 스크롤 시 네비 하이라이트 -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.MainPageHeader');
+    const links  = Array.from(document.querySelectorAll('.NavElement'));
+    const secs   = Array.from(document.querySelectorAll('.SeminarFrame'));
+    const navH   = header.querySelector('.Nav').offsetHeight;
+    const THRESHOLD = 100; // 스크롤 픽셀 기준점
+
+    // 네비 하이라이트 동기화
+    function syncNav(){
+      const y = window.pageYOffset + (window.innerHeight * 0.5);
+      let current = secs[0];
+      for (const s of secs) {
+        if (s.offsetTop <= y) current = s;
+        else break;
+      }
+      links.forEach(l =>
+        l.classList.toggle('active', l.hash === `#${current.id}`)
+      );
+    }
+    const content = document.querySelector('.Main');
+
+    function adjustContentOffset(){
+      // 헤더가 확장/축소되면서 offsetHeight 가 바뀝니다.
+      const finalPT = header.offsetHeight + navH;
+      content.style.paddingTop = `10rem`;
+    }
+
+    // 타이틀 축소/확장
+    function onScrollHeader(){
+      const y = window.pageYOffset;
+      if (y < THRESHOLD) {
+        header.classList.add('expanded');
+        header.classList.remove('shrunk');
+      } else {
+        header.classList.add('shrunk');
+        header.classList.remove('expanded');
+      }
+      syncNav();
+      adjustContentOffset();
+    }
+
+    // 클릭 시 부드러운 스크롤 + 바로 active
+    links.forEach(link=>{
+      link.addEventListener('click', e=>{
+        e.preventDefault();
+        const target = document.querySelector(link.hash);
+        if (!target) return;
+        window.scrollTo({
+          top: target.offsetTop - navH,
+          behavior: 'smooth'
+        });
+        // 즉시 active
+        links.forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    window.addEventListener('scroll',  onScrollHeader);
+    window.addEventListener('resize',  onScrollHeader);
+    window.addEventListener('load',   () => { onScrollHeader(); });
+  });
+</script>

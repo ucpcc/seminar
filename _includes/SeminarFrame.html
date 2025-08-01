@@ -1,0 +1,14 @@
+{% assign y = include.year %}
+
+<section id="y{{ y.year }}" class="SeminarFrame">
+  {% include SeminarElement_blank.html size="small" %}
+  {% include SeminarElement_header.html seminar=y %}
+  {% include SeminarElement_blank.html size="small" %}
+
+  {% for s in y.section %}
+    {% include SeminarElement_section.html section=s %}
+    {% include SeminarElement_blank.html size="small" %}
+  {% endfor %}
+
+  {% include SeminarElement_blank.html size="large" %}
+</section>

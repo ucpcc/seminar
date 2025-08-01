@@ -1,0 +1,92 @@
+/* (1) 시간 | (2) 구분선 | (3) 내용 | (4) 신청 버튼 */
+.SeminarElement{
+  display:grid; grid-template-columns: minmax(calc(10rem * var(--frac)), 1fr) calc(var(--dot) + 2 * var(--lineWeight)) minmax(calc(30rem * var(--frac)), 2fr) minmax(calc(10rem * var(--frac)), 1fr);
+  column-gap:calc(2rem * var(--frac));
+
+  &.header{ align-items:center; }
+  &.section{ align-items:flex-start; }
+  &.blank{
+    &.small{ height: calc(3rem * var(--frac)); }
+    &.large{ height: 25vh; }
+  }
+}
+
+/* (1) 시간 */
+.Left{
+  justify-self:end;
+  color:var(--primary);
+
+  &.header{ font-size:calc(4rem * var(--frac)); font-weight:900; transform:translate(0, -0.05em); }
+  &.section{ font-size:calc(1.3rem * var(--frac)); font-weight:700; transform:translate(0, calc(var(--img) / 2 - 50% - 0.05em)); }
+}
+
+/* (2) 구분선 */
+.Partition{ 
+  position:relative;
+  height:100%;
+
+  &::before{    /* 선 */
+    content:""; position:absolute; inset-block:0;
+    left:50%; transform:translateX(-50%);
+    width:var(--lineWeight); background:var(--primary);
+  }
+  &::after{    /* 점 */
+    content:""; position:absolute; left:50%; top:calc(var(--img) / 2);
+    transform:translate(-50%, -50%);
+    width:var(--dot); height:var(--dot); border-radius:50%;
+    background:#fff; box-shadow:0 0 0 var(--lineWeight) var(--primary);
+  }
+  &.header::after{ display:none; }
+  &.blank::after{ display:none; }
+}
+
+/* (3) 내용 */
+.Middle{
+  display:flex; align-items:flex-start;
+  gap:calc(1.4rem * var(--frac));
+
+  &.header{ font-size:calc(1.3rem * var(--frac)); font-weight:700; line-height:1.4; color:var(--primary); }
+}
+
+.Photo{
+  width:var(--img); height:var(--img); border-radius:50%; object-fit:cover;
+  box-shadow:0 0 6px rgba(0,0,0,.15);
+}
+.sessionPhoto{
+  display:flex; flex-direction: column; justify-content: center;
+  width:var(--img); height:var(--img); object-fit:cover;
+}
+
+.SessionFrame{ 
+  display:flex; flex-direction: column; justify-content: center;
+  height:var(--img);
+  padding: calc(1.5rem * var(--frac)) 0;
+  box-sizing: border-box;
+}
+
+.Text{
+  overflow-wrap:anywhere;   /* 최신 표준: 공백 없어도 임의 위치에서 줄바꿈 */
+  word-break:break-all;     /* 구형·Edge 레거시 대응 */
+
+  &.title{ font-size:calc(1.3rem * var(--frac)); font-weight:700; color:var(--primary); padding: 0 0 calc(0.5rem * var(--frac)); }
+  &.abstr{ font-size:calc(1rem * var(--frac)); font-weight:500; line-height:1.4; color: #000; padding: 0 0 calc(1rem * var(--frac)); }
+  &.name{ font-size:calc(1rem * var(--frac)); font-weight:700; color: #000; padding: 0 0 0.5rem; }
+  &.intro{ font-size:calc(1rem * var(--frac)); font-weight:500; line-height:1.4; color: #000; padding: 0 0 calc(1rem * var(--frac)); }
+
+  &.session{ display: flex; align-items: center; font-size:calc(1.3rem * var(--frac)); font-weight:700; color:var(--primary); }
+  &.description{ display: flex; align-items: center; font-size:calc(1rem * var(--frac)); font-weight:500; line-height:1.4; color: #000; }
+}
+
+.Text{ flex:1 1 0; }
+.Text p, .Text ul, .Text li, .Text h1, .Text h2, .Text h3{
+  margin:0;
+}
+
+/* (4) 신청 버튼 */
+.apply{
+  padding:calc(0.7rem * var(--frac)) calc(1.9rem * var(--frac)); border-radius:2rem; font-weight:700;
+  font-size:calc(1.5rem * var(--frac));
+  background:var(--primary); color:#fff; text-decoration:none; white-space:nowrap;
+
+  &.disabled{ background:#ddd; pointer-events:none; }
+}

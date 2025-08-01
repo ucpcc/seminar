@@ -1,0 +1,148 @@
+// :root{
+//   --primary:#f4a300;
+//   --dot:12px;
+//   --lineWeight:4px;
+//   --img:120px;
+// }
+
+// /* -------- 기본 레이아웃 -------- */
+// html,body{
+//   height:100%;
+//   padding:0;
+//   scroll-behavior:smooth;
+//   font-family:Pretendard,apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+// }
+
+// /* ===== 헤더 ===== */
+// .site-header {
+//   position:fixed; top:0; left:0; right:0; z-index:1000;
+//   display:flex; flex-direction:column; justify-content:center; align-items:center;
+//   background:#fff;
+//   transition: padding 0.3s ease;
+//   box-shadow:0 1px 4px rgba(0,0,0,.06);
+// }
+// .site-header.expanded {
+//   padding:1.5rem 0 0.5rem;
+//   gap: 1.5rem;
+// }
+// .site-header.shrunk {
+//   padding:0.5rem 0 0.5rem; /* 타이틀 패딩만 제거, 네비 자리 확보 */
+// }
+// .site-header.shrunk .site-title {
+//   display: none;
+// }
+
+// .site-title {
+//   margin:0;
+//   font-size:2rem;
+// }
+
+// .main-nav{
+//   padding:0;
+// }
+// .years{ display:flex; gap:4rem; }
+// .year-link{ font-size: 1rem; font-weight:600; color:#333; text-decoration:none; }
+// .year-link.active{ border-bottom:3px solid var(--primary); }
+
+// .content-cell{ font-size:1.3rem; font-weight:700; line-height:1.4; color:var(--primary); }
+
+// /* -------- yearFrame -------- */
+// .year-block{ scroll-snap-align:start; padding:0 0; }
+
+// .yearFrame{ display:flex; flex-direction:column; gap:0; scroll-margin-top: 80px; }
+
+// .page-content {
+//   /* 헤더 높이만큼 padding-top을 줄 건데, 부드럽게 전환되도록 */
+//   transition: padding-top 0.3s ease;
+// }
+
+// /* (1) 시간 | (2) 구분선 | (3) 내용 | (4) 신청 버튼 */
+// .row{
+//   display:grid;
+//   grid-template-columns: minmax(10rem, 1fr) calc(var(--dot) + 2 * var(--lineWeight)) minmax(30rem, 2fr) minmax(10rem, 1fr);
+//   align-items:center;
+//   column-gap:2rem;
+// }
+// .row.card{ align-items:flex-start; }
+// .row.gap{ height: 2.5rem; }
+
+// /* (1) 시간 */
+// .time{ 
+//   justify-self:end; font-size:1.3rem; font-weight:700; color:var(--primary);
+//   transform:translate(0, calc(var(--img) / 2 - 50% - 0.05em));
+// }
+// .time.header{ 
+//   font-size:4rem; font-weight:900;
+//   transform:translate(0, -0.05em);
+// }
+
+// /* (2) 구분선 */
+// .tl-col{ position:relative; height:100%; }
+// .tl-col::before{           /* 세로선 */
+//   content:""; position:absolute; inset-block:0;
+//   left:50%; transform:translateX(-50%);
+//   width:var(--lineWeight); background:var(--primary);
+// }
+// .tl-col::after{            /* 점 (card 전용) */
+//   content:""; position:absolute; left:50%; top:calc(var(--img) / 2);
+//   transform:translate(-50%, -50%);
+//   width:var(--dot); height:var(--dot); border-radius:50%;
+//   background:#fff; box-shadow:0 0 0 var(--lineWeight) var(--primary);
+// }
+// /* YearHeader: 선만, 점 없음 */
+// .line-only::after{ display:none; }
+
+// /* (3) 내용: 사진 + 텍스트 가로 */
+// .speaker{ display:flex; align-items:flex-start; gap:1.4rem; }
+// .card-img{
+//   width:var(--img); height:var(--img); border-radius:50%; object-fit:cover;
+//   box-shadow:0 0 6px rgba(0,0,0,.15);
+// }
+// .txt{ flex:1 1 0; }
+// .txt p,
+// .txt ul,
+// .txt li,
+// .txt h1, .txt h2, .txt h3{
+//   margin-top:0;
+// }
+// .name{ font-size:1rem; font-weight:700; color: #000; }
+// .intro{ 
+//   font-size:1rem; font-weight:500; line-height:1.4; color: #000;
+//   overflow-wrap:anywhere;   /* 최신 표준: 공백 없어도 임의 위치에서 줄바꿈 */
+//   word-break:break-all;     /* 구형·Edge 레거시 대응 */
+// }
+// .title{ font-size:1.3rem; font-weight:700; color:var(--primary); }
+// .abstr{ 
+//   font-size:1rem; font-weight:500; line-height:1.4; margin:0 0; color: #000; 
+//   overflow-wrap:anywhere;   /* 최신 표준: 공백 없어도 임의 위치에서 줄바꿈 */
+//   word-break:break-all;     /* 구형·Edge 레거시 대응 */
+// }
+
+// /* (4) 신청 버튼 */
+// .apply{
+//   padding:0.7rem 1.9rem; border-radius:2rem; font-weight:700;
+//   font-size:1.5rem;
+//   background:var(--primary); color:#fff; text-decoration:none; white-space:nowrap;
+// }
+// .apply.disabled{ background:#ddd; pointer-events:none; }
+
+// /* -------- 반응형 -------- */
+// @media(max-width:920px){
+//   :root{ --dot:9px; --lineWeight:3px; --img:60px; }
+
+//   .row{ grid-template-columns: minmax(7rem, 1fr) calc(var(--dot) + 2 * var(--lineWeight)) minmax(20rem, 2fr) minmax(7rem, 1fr); }
+//   .gap{ height: 1.5rem; }
+
+//   .apply{ padding:0.5rem 1.5rem; font-size:1rem; }
+
+//   .content-cell{ font-size:1rem; }
+
+//   .time-cell{ font-size: 1rem; }
+//   .time-cell.big{ font-size: 2.7rem; }
+
+//   .name{ font-size:1rem; }
+//   .intro{ font-size:0.75rem; }
+//   .title{ font-size:1rem; }
+//   .abstr{ font-size:0.75rem; }
+
+// }
