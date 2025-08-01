@@ -22,6 +22,9 @@ baseurl: ""
 url: "https://seminar.ucpc.me"
 google_analytics: ""
 
+include:
+  - CNAME
+
 # Build settings
 markdown: kramdown
 theme: minima
