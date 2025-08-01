@@ -35,4 +35,5 @@ jobs:
           publish_dir: ./_site
           publish_branch: gh-pages   # 배포용 브랜치
           force_orphan: true         # gh-pages 브랜치가 없다면 새로 만듭니다
+          cname: seminar.ucpc.me
 
