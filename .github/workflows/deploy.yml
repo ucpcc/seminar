@@ -1,0 +1,38 @@
+name: Build & Deploy Jekyll site
+
+on:
+  push:
+    branches:
+      - main    # 빌드·배포를 트리거할 브랜치
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true   # 만약 서브모듈이 있다면
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.9'  # Gemfile 과 맞추신 버전
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build site with Jekyll
+        run: bundle exec jekyll build --destination _site
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages   # 배포용 브랜치
+          force_orphan: true         # gh-pages 브랜치가 없다면 새로 만듭니다
+
