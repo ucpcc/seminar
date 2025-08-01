@@ -1,0 +1,75 @@
+@charset "UTF-8";
+:root { --primary:#f4a300; --dot:12px; --lineWeight:4px; --img:120px; --frac:1; }
+
+/* -------- 기본 레이아웃 -------- */
+html, body { height: 100%; padding: 0; scroll-behavior: smooth; font-family: Pretendard,apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+
+/* ===== 헤더 ===== */
+.Main { transition: padding 0.3s ease; }
+
+.MainPageHeader { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07); }
+
+.MainPageHeader.expanded { padding: calc(1rem * var(--frac)) 0; gap: calc(0.5rem * var(--frac)); }
+
+.MainPageHeader.shrunk { padding: calc(1rem * var(--frac)) 0; /* 타이틀 패딩만 제거, 네비 자리 확보 */ }
+
+.MainPageHeader.shrunk .MainTitle { display: none; }
+
+.MainPageHeader.MainTitle { margin: 0; font-size: calc(2rem * var(--frac)); }
+
+.Nav { padding: 0; display: flex; gap: calc(4rem * var(--frac)); }
+
+.NavElement { font-size: calc(1.2rem * var(--frac)); font-weight: 600; color: #333; text-decoration: none; }
+
+.NavElement.active { border-bottom: calc(3px * var(--frac)) solid var(--primary); }
+
+.MainPageBody { scroll-snap-type: y mandatory; /* 세로 방향 스냅을 강제 */ overflow-y: scroll; }
+
+.SeminarFrame { scroll-snap-align: start; padding: 0 0; scroll-margin-top: 80px; }
+
+/* -------- 반응형 -------- */
+@media (max-width: 920px) { :root { --frac:0.75; --dot:calc(12px * var(--frac)); --lineWeight:calc(4px * var(--frac)); --img:calc(120px * var(--frac)); } }
+/* (1) 시간 | (2) 구분선 | (3) 내용 | (4) 신청 버튼 */
+.SeminarElement { display: grid; grid-template-columns: minmax(calc(10rem * var(--frac)), 1fr) calc(var(--dot) + 2 * var(--lineWeight)) minmax(calc(30rem * var(--frac)), 2fr) minmax(calc(10rem * var(--frac)), 1fr); column-gap: calc(2rem * var(--frac)); }
+.SeminarElement.header { align-items: center; }
+.SeminarElement.section { align-items: flex-start; }
+.SeminarElement.blank.small { height: calc(3rem * var(--frac)); }
+.SeminarElement.blank.large { height: 25vh; }
+
+/* (1) 시간 */
+.Left { justify-self: end; color: var(--primary); }
+.Left.header { font-size: calc(4rem * var(--frac)); font-weight: 900; transform: translate(0, -0.05em); }
+.Left.section { font-size: calc(1.3rem * var(--frac)); font-weight: 700; transform: translate(0, calc(var(--img) / 2 - 50% - 0.05em)); }
+
+/* (2) 구분선 */
+.Partition { position: relative; height: 100%; }
+.Partition::before { /* 선 */ content: ""; position: absolute; inset-block: 0; left: 50%; transform: translateX(-50%); width: var(--lineWeight); background: var(--primary); }
+.Partition::after { /* 점 */ content: ""; position: absolute; left: 50%; top: calc(var(--img) / 2); transform: translate(-50%, -50%); width: var(--dot); height: var(--dot); border-radius: 50%; background: #fff; box-shadow: 0 0 0 var(--lineWeight) var(--primary); }
+.Partition.header::after { display: none; }
+.Partition.blank::after { display: none; }
+
+/* (3) 내용 */
+.Middle { display: flex; align-items: flex-start; gap: calc(1.4rem * var(--frac)); }
+.Middle.header { font-size: calc(1.3rem * var(--frac)); font-weight: 700; line-height: 1.4; color: var(--primary); }
+
+.Photo { width: var(--img); height: var(--img); border-radius: 50%; object-fit: cover; box-shadow: 0 0 6px rgba(0, 0, 0, 0.15); }
+
+.sessionPhoto { display: flex; flex-direction: column; justify-content: center; width: var(--img); height: var(--img); object-fit: cover; }
+
+.SessionFrame { display: flex; flex-direction: column; justify-content: center; height: var(--img); padding: calc(1.5rem * var(--frac)) 0; box-sizing: border-box; }
+
+.Text { overflow-wrap: anywhere; /* 최신 표준: 공백 없어도 임의 위치에서 줄바꿈 */ word-break: break-all; /* 구형·Edge 레거시 대응 */ }
+.Text.title { font-size: calc(1.3rem * var(--frac)); font-weight: 700; color: var(--primary); padding: 0 0 calc(0.5rem * var(--frac)); }
+.Text.abstr { font-size: calc(1rem * var(--frac)); font-weight: 500; line-height: 1.4; color: #000; padding: 0 0 calc(1rem * var(--frac)); }
+.Text.name { font-size: calc(1rem * var(--frac)); font-weight: 700; color: #000; padding: 0 0 0.5rem; }
+.Text.intro { font-size: calc(1rem * var(--frac)); font-weight: 500; line-height: 1.4; color: #000; padding: 0 0 calc(1rem * var(--frac)); }
+.Text.session { display: flex; align-items: center; font-size: calc(1.3rem * var(--frac)); font-weight: 700; color: var(--primary); }
+.Text.description { display: flex; align-items: center; font-size: calc(1rem * var(--frac)); font-weight: 500; line-height: 1.4; color: #000; }
+
+.Text { flex: 1 1 0; }
+
+.Text p, .Text ul, .Text li, .Text h1, .Text h2, .Text h3 { margin: 0; }
+
+/* (4) 신청 버튼 */
+.apply { padding: calc(0.7rem * var(--frac)) calc(1.9rem * var(--frac)); border-radius: 2rem; font-weight: 700; font-size: calc(1.5rem * var(--frac)); background: var(--primary); color: #fff; text-decoration: none; white-space: nowrap; }
+.apply.disabled { background: #ddd; pointer-events: none; }
