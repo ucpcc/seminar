@@ -1,7 +1,7 @@
 # 연도 블록은 필요만큼 추가
 - year: 2025
-  schedule: "8월 24일 (일), 아주대 율곡관"
-  apply_period: "8월 1일 (금) ~ 8월 8일 (금)"
+  schedule: "8월 24일 (일) 13:00 ~ 18:00, 아주대학교 율곡관"
+  apply_period: "8월 2일 (토) ~ 8월 16일 (토)"
   apply_status: "open"          # open | closed
   apply_link: "https://forms.gle/hyczzGryjHFQ9k3Z8"
   section:
