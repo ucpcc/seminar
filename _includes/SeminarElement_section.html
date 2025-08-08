@@ -1,17 +1,57 @@
 {% assign s = include.section %}
 
 <div class="SeminarElement section">
-  <div class="Left section">{{ s.time }}</div>
+  <!-- <div class="Left blank"></div> -->
   <div class="Partition section"></div>
   <div class="Middle section">
-    {% if s.photo %} <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="Photo"> {% endif %}
-    {% if s.sessionPhoto %} <img src="{{ s.sessionPhoto | relative_url }}" alt="{{ s.name }}" class="sessionPhoto"> {% endif %}
+    <div class="TimeFrame">
+      <div class="TimeFrame left">Session {{ s.num }} </div>
+      <div class="TimeFrame right">{{ s.time }}</div>
+    </div>
     {% if s.title %}
       <div class="TextFrame">
-        <div class="Text title">{{ s.title }}</div> 
-        {% if s.abstr %} <div class="Text abstr">{{ s.abstr | markdownify }}</div> {% endif %}
+        <div class="Text title">{{ s.title }}</div>
+
+
+        <div class="expandable">
+          <div class="excerpt">
+            <!-- 요약본 내용 -->
+            {% if s.name %} <div class="Text name">연사 | {{ s.name }}</div> {% endif %}
+          </div>
+
+          <div class="full" hidden>
+            <!-- 전체 내용 -->
+            {% if s.abstr %} <div class="Text abstr">{{ s.abstr | markdownify }}</div> {% endif %}
+            {% if s.name %} <div class="Text name">연사 | {{ s.name }}</div> {% endif %}
+            {% if s.intro %} <div class="Text intro">{{ s.intro | markdownify }}</div> {% endif %}
+          </div>
+
+          <button class="toggle" type="button" aria-expanded="false">더보기</button>
+        </div>
+
+
+
+        <!-- <div class="expandable" id="exp1">
+          <div class="excerpt">
+            {% if s.name %} <div class="Text name">연사 | {{ s.name }}</div> {% endif %}
+          </div>
+
+          <div class="full" id="exp1-panel" aria-hidden="true">
+            {% if s.abstr %} <div class="Text abstr">{{ s.abstr | markdownify }}</div> {% endif %}
+            {% if s.name %} <div class="Text name">연사 | {{ s.name }}</div> {% endif %}
+            {% if s.intro %} <div class="Text intro">{{ s.intro | markdownify }}</div> {% endif %}
+          </div>
+
+          <button class="toggle" type="button" aria-expanded="false" aria-controls="exp1-panel">
+            더보기
+          </button>
+        </div> -->
+
+
+
+        <!-- {% if s.abstr %} <div class="Text abstr">{{ s.abstr | markdownify }}</div> {% endif %}
         {% if s.name %} <div class="Text name">연사 | {{ s.name }}</div> {% endif %}
-        {% if s.intro %} <div class="Text intro">{{ s.intro | markdownify }}</div> {% endif %}
+        {% if s.intro %} <div class="Text intro">{{ s.intro | markdownify }}</div> {% endif %} -->
       </div>
     {% endif %}
     {% if s.session %}
@@ -21,5 +61,26 @@
       </div>
     {% endif %}
   </div>
-  <div class="Right section"></div>
+  <div class="Right section">
+    {% if s.photo %} <img src="{{ s.photo | relative_url }}" alt="{{ s.name }}" class="Photo"> {% endif %}
+    {% if s.sessionPhoto %} <img src="{{ s.sessionPhoto | relative_url }}" alt="{{ s.name }}" class="sessionPhoto"> {% endif %}
+  </div>
 </div>
+
+
+
+
+<script>
+  document.addEventListener('click', (e) => {
+    if (!e.target.matches('.expandable .toggle')) return;
+
+    const box = e.target.closest('.expandable');
+    const expanded = box.classList.toggle('is-expanded');
+
+    box.querySelector('.excerpt').hidden = expanded;
+    box.querySelector('.full').hidden = !expanded;
+
+    e.target.setAttribute('aria-expanded', String(expanded));
+    e.target.textContent = expanded ? '접기' : '더보기';
+  });
+</script>
