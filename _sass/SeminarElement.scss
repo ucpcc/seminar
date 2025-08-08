@@ -1,6 +1,48 @@
-/* (1) 시간 | (2) 구분선 | (3) 내용 | (4) 신청 버튼 */
+.SeminarFrame{ width:100vw; display: flex; flex-direction:column; align-items: center; }
+
+.SeminarHeaderFrame{ 
+  width:100vw; display:flex; align-items: center; justify-content:center;
+  background: #000;
+  padding: 1rem 0;
+}
+.SeminarHeader{
+  width: var(--mainWidth); display:flex; align-items:center; gap:calc(2rem * var(--frac));
+}
+.SeminarHeaderLeft{ display:flex; flex-direction:column; justify-content:center; }
+// .SeminarHeaderMiddle{ font-size:calc(1.3rem * var(--frac)); font-weight:700; color:#fff; }
+.apply{
+  display:flex; justify-content:center;
+  padding:calc(0.3rem * var(--frac)); border-radius:0.5rem; font-weight:700;
+  font-size:calc(1.3rem * var(--frac));
+  background:var(--primary); color:#000; text-decoration:none; white-space:nowrap;
+  margin: 0.5rem 0;
+
+  // &.disabled{ border-width:0.5rem; border-color:#fff; pointer-events:none; }
+  &.disabled{ color:var(--primary); font-weight: 500; border: 2px solid var(--primary); background:transparent; pointer-events:none; }
+}
+.SeminarHeaderRight{ display:flex; flex-direction:column; justify-content:center; gap:8px; }
+.SeminarHeaderText{ 
+  display:flex; align-items:center;
+  gap:calc(0.5rem * var(--frac));
+  &.left{
+    width:calc(6rem * var(--frac));
+    justify-content:center;
+    padding:calc(0.3rem * var(--frac)) calc(0.5rem * var(--frac)); border-radius:2rem;
+    border: 2px solid #fff;
+    font-size:calc(1rem * var(--frac)); font-weight:500; line-height:1; color:#fff;
+  }
+  &.right{
+    font-size:calc(1rem * var(--frac)); font-weight:500; color:#fff;
+  }
+}
+
+
+/* (1) 구분선 | (2) 내용 | (3) 사진 */
 .SeminarElement{
-  display:grid; grid-template-columns: minmax(calc(10rem * var(--frac)), 1fr) calc(var(--dot) + 2 * var(--lineWeight)) minmax(calc(30rem * var(--frac)), 2fr) minmax(calc(10rem * var(--frac)), 1fr);
+  // display:grid; grid-template-columns: minmax(calc(10rem * var(--frac)), 1fr) calc(var(--dot) + 2 * var(--lineWeight)) minmax(calc(30rem * var(--frac)), 2fr) minmax(calc(10rem * var(--frac)), 1fr);
+  width: var(--mainWidth);
+  // display:grid; grid-template-columns: calc(var(--dot) + 2 * var(--lineWeight)) calc(50rem * var(--frac)) calc(10rem * var(--frac));
+  display:grid; grid-template-columns: calc(var(--dot) + 2 * var(--lineWeight)) 10fr 1fr;
   column-gap:calc(2rem * var(--frac));
 
   &.header{ align-items:center; }
@@ -31,7 +73,7 @@
     width:var(--lineWeight); background:var(--primary);
   }
   &::after{    /* 점 */
-    content:""; position:absolute; left:50%; top:calc(var(--img) / 2);
+    content:""; position:absolute; left:50%; top:calc(1.6rem * 0.5 * var(--frac));
     transform:translate(-50%, -50%);
     width:var(--dot); height:var(--dot); border-radius:50%;
     background:#fff; box-shadow:0 0 0 var(--lineWeight) var(--primary);
@@ -42,19 +84,28 @@
 
 /* (3) 내용 */
 .Middle{
-  display:flex; align-items:flex-start;
-  gap:calc(1.4rem * var(--frac));
-
-  &.header{ font-size:calc(1.3rem * var(--frac)); font-weight:700; line-height:1.4; color:var(--primary); }
+  // display:flex; align-items:flex-start;
+  // gap:calc(1.4rem * var(--frac));
+  // &.header{
+  //   padding:calc(0.3rem * var(--frac)) calc(0.5rem * var(--frac)); border-radius:2rem; background:#000;
+  //   font-size:calc(1rem * var(--frac)); font-weight:700; line-height:1; color:#fff;
+    // text-decoration:none; white-space:nowrap;
+  // }
+  &.header{
+    font-size:calc(1.3rem * var(--frac)); font-weight:700; color:var(--primary);
+  }
 }
 
-.Photo{
-  width:var(--img); height:var(--img); border-radius:50%; object-fit:cover;
-  box-shadow:0 0 6px rgba(0,0,0,.15);
-}
-.sessionPhoto{
-  display:flex; flex-direction: column; justify-content: center;
-  width:var(--img); height:var(--img); object-fit:cover;
+.TimeFrame{
+  display:flex; align-items:center;
+  gap:calc(0.5rem * var(--frac));
+  &.left{
+    padding:calc(0.3rem * var(--frac)) calc(0.5rem * var(--frac)); border-radius:2rem; background:#000;
+    font-size:calc(1rem * var(--frac)); font-weight:700; line-height:1; color:#fff;
+  }
+  &.right{
+    font-size:calc(1rem * var(--frac)); font-weight:700; line-height:1; color:#000;
+  }
 }
 
 .SessionFrame{ 
@@ -68,7 +119,9 @@
   overflow-wrap:anywhere;   /* 최신 표준: 공백 없어도 임의 위치에서 줄바꿈 */
   word-break:break-all;     /* 구형·Edge 레거시 대응 */
 
-  &.title{ font-size:calc(1.3rem * var(--frac)); font-weight:700; color:var(--primary); padding: 0 0 calc(0.5rem * var(--frac)); }
+  &.year{ white-space: nowrap; font-size:calc(4rem * var(--frac)); font-weight:900; color:var(--primary); line-height:1; }
+
+  &.title{ font-size:calc(1.3rem * var(--frac)); font-weight:700; color:var(--primary); padding: calc(0.5rem * var(--frac)) 0; }
   &.abstr{ font-size:calc(1rem * var(--frac)); font-weight:500; line-height:1.4; color: #000; padding: 0 0 calc(1rem * var(--frac)); }
   &.name{ font-size:calc(1rem * var(--frac)); font-weight:700; color: #000; padding: 0 0 0.5rem; }
   &.intro{ font-size:calc(1rem * var(--frac)); font-weight:500; line-height:1.4; color: #000; padding: 0 0 calc(1rem * var(--frac)); }
@@ -82,11 +135,147 @@
   margin:0;
 }
 
-/* (4) 신청 버튼 */
-.apply{
-  padding:calc(0.7rem * var(--frac)) calc(1.9rem * var(--frac)); border-radius:2rem; font-weight:700;
-  font-size:calc(1.5rem * var(--frac));
-  background:var(--primary); color:#fff; text-decoration:none; white-space:nowrap;
+// .p, .ul, .li, .h1, .h2, .h3{
+//   margin:0;
+// }
 
-  &.disabled{ background:#ddd; pointer-events:none; }
+/* (4) 신청 버튼 */
+.Photo{
+  width:var(--img); height:var(--img); border-radius:50%; object-fit:cover;
+  box-shadow:0 0 6px rgba(0,0,0,.15);
 }
+.sessionPhoto{
+  display:flex; flex-direction: column; justify-content: center;
+  width:var(--img); height:var(--img); object-fit:cover;
+}
+
+
+
+.expandable .toggle {
+  background: none;       /* 배경 제거 */
+  border: none;           /* 테두리 제거 */
+  padding: 0;             /* 내부 여백 제거 */
+  margin: 0;
+  color: #000;            /* 글자 색상 */
+  font-size: 1rem;        /* 글자 크기 */
+  cursor: pointer;        /* 클릭 커서 */
+  text-decoration: underline; /* 밑줄로 클릭 가능함 표시 (선택) */
+
+  &:hover {
+    text-decoration: none; /* 호버 시 밑줄 제거 (선택) */
+    color: #555;           /* 호버 시 색상 변화 */
+  }
+}
+
+
+
+// .expandable {
+//   .excerpt { display: block; }
+//   .full { display: block; }      // 기본값
+//   .full[hidden] { display: none; } // hidden 속성 대응
+
+//   &.is-expanded {
+//     .excerpt { display: none; }
+//     .full { display: block; }
+//   }
+
+//   .toggle {
+//     margin-top: 0.5rem;
+//     padding: 0.3rem 0.6rem;
+//     border-radius: 2rem;
+//     border: 2px solid #000;
+//     background: transparent;
+//     color: #000;
+//     cursor: pointer;
+
+//     &:hover { background: #000; color: #fff; }
+//   }
+// }
+
+// /* .full 컨테이너가 내용 높이를 전부 먹도록 */
+// .expandable .full {
+//   display: block !important;
+//   height: auto !important;
+//   max-height: none !important;
+//   overflow: visible !important;
+//   -webkit-line-clamp: initial !important;
+//   white-space: normal !important;
+// }
+
+// /* 각 블록은 줄바꿈되게 */
+// .expandable .full > .Text {
+//   display: block !important;
+// }
+
+
+/* 기본: 전체 내용은 숨김 */
+.expandable .full[hidden] {
+  display: none !important;   /* 어떤 display 규칙도 뚫고 숨김 */
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 펼쳐졌을 때 보이기 */
+.expandable .full {
+  display: block;              /* 기본 표시 */
+}
+
+/* 요약/전체 상호배타 */
+.expandable .excerpt { display: block; }
+.expandable.is-expanded .excerpt { display: none; }
+
+
+/* 요약 영역: 한 줄만 보이게(필요하면 유지) */
+.excerpt .Text {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;      /* 또는 본인이 쓰던 줄수 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;         /* nowrap 쓰고 있었다면 normal로 */
+}
+
+/* 전체 내용: 클램프/말줄임/한줄처리 해제 */
+.full .Text {
+  display: block;              /* -webkit-box라면 block으로 초기화 */
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;         /* nowrap이었다면 꼭 normal로 */
+}
+
+
+// .expandable {
+//   --dur: 280ms;
+//   --ease: cubic-bezier(0.2, 0.0, 0.2, 1); // 편안한 머티리얼 느낌
+
+//   .excerpt { display: block; }
+
+//   .full {
+//     overflow: hidden;
+//     height: 0;                 // 처음에는 닫힌 상태
+//     opacity: 0;
+//     transition:
+//       height var(--dur) var(--ease),
+//       opacity var(--dur) linear;
+//   }
+
+//   &.is-expanded {
+//     .excerpt { display: none; }
+//     // .full의 height는 JS가 0→scrollHeight(px)로 애니메이션하고,
+//     // 끝나면 auto로 바꿔줌 (아래 JS 참고)
+//   }
+
+//   .toggle {
+//     margin-top: 0.5rem;
+//     padding: 0.3rem 0.6rem;
+//     border-radius: 2rem;
+//     border: 2px solid #000;
+//     background: transparent;
+//     color: #000;
+//     cursor: pointer;
+
+//     &:hover { background: #000; color: #fff; }
+//   }
+// }

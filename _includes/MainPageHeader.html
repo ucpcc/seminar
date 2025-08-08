@@ -1,5 +1,8 @@
 <header class="MainPageHeader">
-  <h1 class="MainTitle">전국 대학생 프로그래밍 대회 동아리 연합 세미나</h1>
+  <div class="MainTitle">
+    <div class="MainTitleText small">전국 대학생 프로그래밍 대회 동아리 연합</div>
+    <div class="MainTitleText big">UCPC 세미나</div>
+  </div>
   <nav class="Nav">
     {% assign nav = site.data.section | sort_natural: 'year' %}
     {% for y in nav %}

@@ -1,17 +1,19 @@
 :root{
   --primary:#f4a300;
-  --dot:12px;
+  --dot:8px;
   --lineWeight:4px;
   --img:120px;
   --frac:1;
+  --mainWidth:70%;
 }
 
 /* -------- 기본 레이아웃 -------- */
 html,body{
   height:100%;
   padding:0;
+  margin:0;
   scroll-behavior:smooth;
-  font-family:Pretendard,apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-family:inherit,apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
 /* ===== 헤더 ===== */
@@ -33,9 +35,26 @@ html,body{
 .MainPageHeader.shrunk .MainTitle {
   display: none;
 }
-.MainPageHeader.MainTitle {
+.MainPageHeader .MainTitle {
   margin:0;
-  font-size:calc(2rem * var(--frac));
+  padding: 10px;
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.MainTitleText{
+  margin:0;
+  color:#000;
+  &.small{
+    font-weight:500;
+    font-size:1rem;
+  }
+  &.big{
+    font-weight:700;
+    font-size:2rem;
+  }
 }
 
 .Nav{
@@ -43,12 +62,14 @@ html,body{
   display:flex;
   gap:calc(4rem * var(--frac)); 
 }
-.NavElement{ font-size: calc(1.2rem * var(--frac)); font-weight:600; color:#333; text-decoration:none; }
+.NavElement{ font-size: calc(1.1rem * var(--frac)); font-weight:600; color:#333; text-decoration:none; }
 .NavElement.active{ border-bottom:calc(3px * var(--frac)) solid var(--primary); }
 
 .MainPageBody{
+  overflow-x: hidden;
+  padding: 0;
   scroll-snap-type: y mandatory; /* 세로 방향 스냅을 강제 */
-  overflow-y: scroll;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
 }
 
 .SeminarFrame{ scroll-snap-align:start; padding:0 0; scroll-margin-top: 80px; }
@@ -60,5 +81,34 @@ html,body{
     --dot:calc(12px * var(--frac));
     --lineWeight:calc(4px * var(--frac));
     --img:calc(120px * var(--frac));
+    --mainWidth:90%;
   }
 }
+
+
+// @media (min-width: 1024px) {
+//   :root {
+//     --mainWidth: 70%;
+//     --frac: 1;
+//   }
+
+//   .MainPageHeader {
+//     padding: calc(1rem * var(--frac)) 0;
+//   }
+
+//   .MainPageHeader.MainTitle {
+//     font-size: calc(2rem * var(--frac));
+//   }
+
+//   .Nav {
+//     gap: calc(4rem * var(--frac));
+//   }
+
+//   .NavElement {
+//     font-size: calc(1.2rem * var(--frac));
+//   }
+
+//   .MainPageBody {
+//     padding: 3rem;
+//   }
+// }
