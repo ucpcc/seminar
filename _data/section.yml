@@ -3,7 +3,7 @@
   schedule: "8월 24일 (일) 13:00 ~ 18:00"
   location: "아주대학교 율곡관"
   apply_period: "8월 2일 (토) ~ 8월 19일 (화) (정원 마감 시, 접수가 조기 종료됩니다)"
-  apply_status: "open"          # open | closed
+  apply_status: "closed"          # open | closed
   apply_link: "https://forms.gle/hyczzGryjHFQ9k3Z8"
   section:
     - time: 13:20 ~ 14:10
