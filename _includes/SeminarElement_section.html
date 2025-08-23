@@ -71,16 +71,80 @@
 
 
 <script>
-  document.addEventListener('click', (e) => {
-    if (!e.target.matches('.expandable .toggle')) return;
+  // Bind once globally to avoid duplicate listeners from repeated includes
+  if (!window.__expandableInit) {
+    window.__expandableInit = true;
+    document.addEventListener('click', (e) => {
+      const toggleBtn = e.target.closest('.expandable .toggle');
+      if (!toggleBtn) return;
 
-    const box = e.target.closest('.expandable');
-    const expanded = box.classList.toggle('is-expanded');
+      const box = toggleBtn.closest('.expandable');
+      if (!box) return;
 
-    box.querySelector('.excerpt').hidden = expanded;
-    box.querySelector('.full').hidden = !expanded;
+      const wasExpanded = box.classList.contains('is-expanded');
+      const willExpand = !wasExpanded;
+      box.classList.toggle('is-expanded');
 
-    e.target.setAttribute('aria-expanded', String(expanded));
-    e.target.textContent = expanded ? '접기' : '더보기';
-  });
-</script>
+      const excerptEl = box.querySelector('.excerpt');
+      const fullEl = box.querySelector('.full');
+
+      // Ensure elements exist
+      if (!fullEl || !excerptEl) return;
+
+      // Helper: animate height for smooth transition
+      const animate = (expand) => {
+        fullEl.style.overflow = 'hidden';
+        fullEl.style.transition = 'height 280ms cubic-bezier(0.2, 0.0, 0.2, 1)';
+
+        if (expand) {
+          // Show full content and animate from 0 -> scrollHeight
+          excerptEl.hidden = true;
+          fullEl.hidden = false;
+          fullEl.style.height = '0px';
+          // Force reflow
+          void fullEl.offsetHeight;
+          const endH = fullEl.scrollHeight;
+          fullEl.style.height = endH + 'px';
+          const onEnd = () => {
+            fullEl.style.height = '';
+            fullEl.style.transition = '';
+            fullEl.style.overflow = '';
+            fullEl.removeEventListener('transitionend', onEnd);
+          };
+          fullEl.addEventListener('transitionend', onEnd);
+        } else {
+          // Collapse: measure current height, animate to 0, then hide
+          excerptEl.hidden = true; // keep excerpt hidden until collapse finishes
+          const startH = fullEl.scrollHeight;
+          fullEl.style.height = startH + 'px';
+          // Force reflow
+          void fullEl.offsetHeight;
+          fullEl.style.height = '0px';
+          const onEnd = () => {
+            fullEl.hidden = true;
+            excerptEl.hidden = false;
+            fullEl.style.height = '';
+            fullEl.style.transition = '';
+            fullEl.style.overflow = '';
+            fullEl.removeEventListener('transitionend', onEnd);
+          };
+          fullEl.addEventListener('transitionend', onEnd);
+        }
+      };
+
+      // Run animation
+      animate(willExpand);
+
+      // Update button a11y and label
+      toggleBtn.setAttribute('aria-expanded', String(willExpand));
+      toggleBtn.textContent = willExpand ? '접기' : '더보기';
+
+      // Temporarily disable scroll snapping when any expandable is open
+      const mainBody = document.querySelector('.MainPageBody');
+      if (mainBody) {
+        const anyOpen = document.querySelector('.expandable.is-expanded');
+        mainBody.classList.toggle('no-snap', Boolean(anyOpen));
+      }
+    });
+  }
+  </script>
