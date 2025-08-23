@@ -74,6 +74,9 @@ html,body{
 
 .SeminarFrame{ scroll-snap-align:start; padding:0 0; scroll-margin-top: 80px; }
 
+/* 확장 중에는 스냅 비활성화로 점프 방지 */
+.MainPageBody.no-snap { scroll-snap-type: none; }
+
 /* -------- 반응형 -------- */
 @media(max-width:920px){
   :root{ 
