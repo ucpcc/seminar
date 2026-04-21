@@ -2,6 +2,14 @@ div.footer_contents {
   text-align: center;
   font-size: 0.8em;
   letter-spacing: 0.05ch;
+  a {
+    color: #f8b831;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  &:hover {
+    color: #ffcc00;
+  }
 }
 
 div.footer_contents.old_sites {

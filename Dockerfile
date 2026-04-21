@@ -1,5 +1,5 @@
 # Ruby 버전을 3.1로 올려서 최신 라이브러리들과의 충돌을 피합니다.
-FROM ruby:3.1
+FROM ruby:3.2
 
 # 빌드 도구 설치
 RUN apt-get update -qq && apt-get install -y build-essential
