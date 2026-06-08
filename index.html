@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UCPC Seminar</title>
+    <script>
+  (() => {
+    const checkViewport = () => {
+      // 기준 크기: 720px 미만이면 모바일, 이상이면 데스크톱 (원하는 수치로 변경 가능)
+      const isMobileSize = window.innerWidth < 720; 
+      
+      const root = document.documentElement;
+      if (isMobileSize) {
+        root.classList.add("device-mobile");
+        root.classList.remove("device-desktop");
+      } else {
+        root.classList.add("device-desktop");
+        root.classList.remove("device-mobile");
+      }
+    };
+
+    // 1. 페이지가 처음 로드될 때 실행
+    checkViewport();
+
+    // 2. 브라우저 창 크기가 바뀔 때마다 실시간으로 실행 (반응형)
+    window.addEventListener("resize", checkViewport);
+  })();
+</script>
+    <link rel="stylesheet" href="./styles.css?v=cta-contained-desktop" />
+  </head>
+  <body>
+    <main class="page-shell" aria-label="UCPC Seminar">
+      <nav class="year-nav" aria-label="Seminar years">
+        <a href="#" onclick="return false;">ARCHIVE</a>
+        <a href="#year-2017">2017</a>
+        <a href="#year-2025">2025</a>
+        <a class="active" href="#year-2026" aria-current="page">2026</a>
+      </nav>
+
+      <header class="hero" id="year-2026">
+        <div class="hero-copy">
+          <p class="hero-title">UCPC<br /> SEMINAR</p>
+          <p class="hero-kicker">전국 대학생 프로그래밍 대회 동아리 연합</p>
+        </div>
+        <img class="mark" src="./assets/images/ucpc-logo.png" alt="" aria-hidden="true" />
+      </header>
+
+      <section class="event-info" aria-label="2026 event information">
+        <div class="info-block">
+          <p class="info-label">일시</p>
+          <p class="info-main">2026년 7월 13일</p>
+          <p class="info-time"><strong>월요일</strong> 13:00 - 18:00</p>
+        </div>
+        <div class="info-divider" aria-hidden="true"></div>
+        <div class="info-block">
+          <p class="info-label">장소</p>
+          <p class="info-main">KAIST</p>
+          <p class="info-place">대강당</p>
+        </div>
+      </section>
+
+      <section class="program current-program" aria-labelledby="speaker-2026">
+        <div class="section-heading">
+          <h1 id="speaker-2026">연사 소개</h1>
+          <span class="heading-line" aria-hidden="true"></span>
+          <span class="heading-glyphs" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </span>
+        </div>
+        <div class="session-list" aria-label="2026 sessions">
+          <article class="session-card">
+            <div class="session-number dark"><span>01</span><small>nn:nn<br /><span class="time-tilde">~</span><br />nn:nn</small></div>
+            <div class="session-body">
+              <div>
+                <h2>어떤 세션이 진행될까요?</h2>
+                <p>연사 | 비공개 <a href="#session-01">더보기</a></p>
+                <div class="session-description">
+                  <p>어떤 세션이 진행될까요?</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number yellow"><span>02</span><small>nn:nn<br /><span class="time-tilde">~</span><br />nn:nn</small></div>
+            <div class="session-body">
+              <div>
+                <h2>어떤 세션이 진행될까요?</h2>
+                <p>연사 | 비공개 <a href="#session-02">더보기</a></p>
+                <div class="session-description">
+                  <p>어떤 세션이 진행될까요?</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number dark"><span>03</span><small>nn:nn<br /><span class="time-tilde">~</span><br />nn:nn</small></div>
+            <div class="session-body">
+              <div>
+                <h2>어떤 세션이 진행될까요?</h2>
+                <p>연사 | 비공개 <a href="#session-03">더보기</a></p>
+                <div class="session-description">
+                  <p>어떤 세션이 진행될까요?</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number yellow"><span>04</span><small>nn:nn<br /><span class="time-tilde">~</span><br />nn:nn</small></div>
+            <div class="session-body">
+              <div>
+                <h2>어떤 세션이 진행될까요?</h2>
+                <p>연사 | 비공개 <a href="#session-04">더보기</a></p>
+                <div class="session-description">
+                  <p>어떤 세션이 진행될까요?</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+        </div>
+        <p class="cta">참가 신청이 아직 시작되지 않았습니다</p>
+      </section>
+
+      <section class="past-year" id="year-2025" aria-labelledby="heading-2025">
+        <h2 id="heading-2025"><span>2025</span><b></b>8월 24일 아주대학교 율곡관</h2>
+      </section>
+
+      <section class="program" aria-labelledby="speaker-2025">
+        <div class="section-heading">
+          <h2 id="speaker-2025">연사 소개</h2>
+          <span class="heading-line" aria-hidden="true"></span>
+          <span class="heading-glyphs" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </span>
+        </div>
+        <div class="session-list" aria-label="2025 sessions">
+          <article class="session-card">
+            <div class="session-number dark"><span>01</span><small>14:35<br /><span class="time-tilde">~</span><br />15:35</small></div>
+            <div class="session-body">
+              <div><h3>알고리즘 문제 해결에서 배운 것들, 그리고 세상에서 배운 것들</h3><p>연사 | 구종만 <a href="#session-2025-01">더보기</a></p>
+                <div class="session-description">
+                  <p>PS만 열심히 하던 대학 시절을 마치고 퀀트 트레이딩 일을 한 지 16년이 지났습니다. PS를 하며 배운 것들 중 유용했던 것이 있었고, 현업에서 일해 보니 미처 몰랐던 것도 많았습니다. 16년 전의 제가 알았다면 좋았을 것, 16년 전에 더 많이 했다면 좋았을 것들이 무엇일지 이야기해 보려고 합니다.</p>
+                  <p>연사 | 구종만</p>
+                  <ul>
+                    <li>Tower Research Capital이라는 HFT 회사에서 퀀트 포트폴리오 매니저로 일하고 있습니다.</li>
+                    <li>ACM ICPC, Google Code Jam, TopCoder Open 등의 결선에 03년부터 08년까지 꾸준히 참가했습니다.</li>
+                    <li>『알고리즘 문제 해결 전략』 책을 썼고, 알고스팟 운영진으로 참여했습니다. 전대프연 2013 대회까지는 스탭으로도 참여했습니다.</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/jongman.png" alt="연사자 구종만" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number yellow"><span>02</span><small>14:35<br /><span class="time-tilde">~</span><br />15:35</small></div>
+            <div class="session-body">
+              <div><h3>당신이 알고리즘 문제를 푸는 이유는 무엇인가?</h3><p>연사 | 권욱제 (wookje)<a href="#session-2025-02">더보기</a></p>
+                <div class="session-description">
+                  <p>당신은 왜 이것을 하는가? 특히, 그것을 반복하는 이유는 무엇인가? 우연, 생존, 습관, 취미 혹은 자유, …. 자신과 시대에 대한 인지가 정교할수록 더욱 정교한 답을 내놓을 수 있을 것이다. 본 발표에서는 현재의 시대에서 알고리즘 문제 풀이를 바라보는 몇 가지 관점을 소개할 것이다. 그 중 하나의 관점을 미리 소개하자면, 코딩을 못하는 엔지니어는 칼질을 못하는 요리사와 같다는 것이다. 칼질을 못해도 요리사가 될 수 있고 맛있는 음식을 내놓을 수 있지만, 그러한 요리사의 가능성은 특정한 방면에서 제한될 것이다. 같은 조건이라면 칼질을 잘하는 것이 좋은 한편, 같은 조건을 가진 사람은 없다. 본 발표가 끝난 후에는 발표의 제목에 관해, 혹은 당신의 현재에 관해, 스스로의 답을 찾는 시간을 가질 수 있기를 바란다.</p>
+                  <p>연사 | 권욱제 (wookje)</p>
+                  <ul>
+                    <li>현 Google Korea, Search Quality</li>
+                    <li>전 Doeat, Flipster, Riiid, Mindslab</li>
+                    <li>2019 ACM-ICPC Seoul Regional 12위</li>
+                    <li>숭실대학교 컴퓨터학부, 선린인터넷고등학교 졸업</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/wookje.jpg" alt="권욱제 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number dark"><span>03</span><small>15:50<br /><span class="time-tilde">~</span><br />16:50</small></div>
+            <div class="session-body">
+              <div><h3>7년동안 소파를 옮긴 방법<br>(How to move a sofa around for 7 years)</h3><p>연사 | 백진언 (boj: xtalxlr, cf: xtalclr)<a href="#session-2025-03">더보기</a></p>
+                <div class="session-description">
+                  <p>어려운 수학 문제가 풀리는 데엔 그만한 사연이 있다. 그 예시 중 하나로 소파 옮기기 문제가 어떻게 풀리게 됐는지를 발표자의 개인적 여정을 통해 알아본다.</p>
+                  <p>연사 | 백진언 (boj: xtalxlr, cf: xtalclr)</p>
+                  <p>수학을 연구합니다. 특히 간단한 기하학적 상황에서 특정 값을 최소화/최대화하는 문제들에 관심 있습니다. 포항공과대학교에서 학사를, 미시건대학교에서 박사를 졸업하고, 연세대학교에서 박사후연구원을 지낸 뒤 현재 고등과학원에서 연구원으로 재직 중입니다.</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/xtalxlr.jpg" alt="백진언 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number yellow"><span>04</span><small>17:05<br /><span class="time-tilde">~</span><br />18:05</small></div>
+            <div class="session-body">
+              <div><h3>이론 컴퓨터 과학에서 사용되는 PS 알고리즘들</h3><p>연사 | 구재현 (koosaga)<a href="#session-2025-04">더보기</a></p>
+                <div class="session-description">
+                  <p>TBD</p>
+                  <p>연사 | 구재현 (koosaga)</p>
+                  <p>현재 MIT에서 알고리즘 연구로 박사 과정 진행중인 구재현입니다. UCPC 2018, 2022, 2023 우승 팀의 일원이었고, 2016년부터 2022년까지 백준 온라인 저지 랭킹 1등이었고 현재는 3등을 유지 중입니다. 여전히 많은 프로그래밍 대회에 출제 / 참여 중이고, 박사 과정도 프로그래밍 대회에서 다루는 것과 동일한 주제로 진행하고 있습니다.</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/koosaga.jpg" alt="구재현 연사자" />
+            </div>
+          </article>
+        </div>
+        <p class="cta closed">모집이 마감되었습니다.</p>
+      </section>
+
+      <section class="past-year" id="year-2017" aria-labelledby="heading-2017">
+        <h2 id="heading-2017"><span>2017</span><b></b>2월 11일 삼성전자 서울 R&amp;D캠퍼스</h2>
+      </section>
+
+      <section class="program last-program" aria-labelledby="speaker-2017">
+        <div class="section-heading">
+          <h2 id="speaker-2017">연사 소개</h2>
+          <span class="heading-line" aria-hidden="true"></span>
+          <span class="heading-glyphs" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </span>
+        </div>
+        <div class="session-list" aria-label="2017 sessions">
+          <article class="session-card">
+            <div class="session-number dark"><span>01</span><small>13:20<br /><span class="time-tilde">~</span><br />14:10</small></div>
+            <div class="session-body">
+              <div><h3>초심자를 위한 알고리즘 공부 전략</h3><p>연사 | 오현석 (algoshipda)<a href="#session-2017-01">더보기</a></p>
+                <div class="session-description">
+                  <p>알고리즘을 공부하기엔 너무 늦은게 아닐까? 라고 생각하시는 분들을 위한 강연</p>
+                  <p>연사 | 오현석 (algoshipda)</p>
+                  <p>부산대학교 정보컴퓨터공학부</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number yellow"><span>02</span><small>14:10<br /><span class="time-tilde">~</span><br />15:00</small></div>
+            <div class="session-body">
+              <div><h3>알고리즘 문제 출제전략</h3><p>연사 | 김재홍 (Xhark)<a href="#session-2017-02">더보기</a></p>
+                <div class="session-description">
+                  <ul>
+                    <li>SK T-Brain</li>
+                    <li>Research Engineer</li>
+                  </ul>
+                  <p>-</p>
+                  <p>문제는 푸는 것 보다 만드는게 더 재미있다고 생각하는 사람.<br />Problem Solving 대회 참가로 모닝캄 클럽 가입.<br />웹 개발을 하다가 지금은 AI 연구중.</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number dark"><span>03</span><small>15:00<br /><span class="time-tilde">~</span><br />15:50</small></div>
+            <div class="session-body">
+              <div><h3>Teamwork in Programming Contests</h3><p>연사 | 장홍준 (hongjun7)<a href="#session-2017-03">더보기</a></p>
+                <div class="session-description">
+                  <p>ACM ICPC 대회를 위해 팀원들과 함께 고민하고 노력했던 최선(最善)</p>
+                  <p>연사 | 장홍준 (hongjun7)</p>
+                  <ul>
+                    <li>고려대학교 컴퓨터학과</li>
+                    <li>2016 한국 대학생 프로그래밍 경시대회 금상(3위)</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number yellow"><span>04</span><small>15:50<br /><span class="time-tilde">~</span><br />16:40</small></div>
+            <div class="session-body">
+              <div><h3>알고리즘 공부하다가 창업…</h3><p>연사 | 최백준 (baekjoon)<a href="#session-2017-04">더보기</a></p>
+                <div class="session-description">
+                  <p>벌써 창업한지 2년째<br />2년 간의 스타트링크 이야기</p>
+                  <p>연사 | 최백준 (baekjoon)</p>
+                  <p>스타트링크 (Startlink)</p>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number dark"><span>05</span><small>16:40<br /><span class="time-tilde">~</span><br />17:30</small></div>
+            <div class="session-body">
+              <div><h3>PS가 이렇게 해롭습니다, 여러분!</h3><p>연사 | 박성원 (ntopia)<a href="#session-2017-05">더보기</a></p>
+                <div class="session-description">
+                  <p>PS를 열심히 하면 어떤것이 좋은지<br />PS를 열심히 하면 어떤것을 놓치게 되는지<br />제 경험을 나눠보고자 합니다</p>
+                  <p>연사 | 박성원 (ntopia)</p>
+                  <ul>
+                    <li>서울대학교 컴퓨터공학부</li>
+                    <li>2016 ACM-ICPC Daejeon Regional Contest 2nd Placed</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/defaultProfile.png" alt="비공개 연사자" />
+            </div>
+          </article>
+          <article class="session-card">
+            <div class="session-number yellow"><span>06</span><small>17:30<br /><span class="time-tilde">~</span><br />18:00</small></div>
+            <div class="session-body">
+              <div><h3>삼성전자/소프트웨어멤버십 설명회</h3><p>2017 UCPC 세미나 SPONSOR</p></div>
+              <!-- <span class="speaker-photo" aria-hidden="true"></span> -->
+              <img class="speaker-photo" src="./assets/people/samsung_sm.png" alt="삼성소프트웨어멤버십" />
+            </div>
+          </article>
+        </div>
+        <p class="cta closed">모집이 마감되었습니다.</p>
+      </section>
+
+      <footer class="footer" id="archive">
+        <p>전국 대학생 프로그래밍 대회 동아리 연합</p>
+        <p>designs &copy; 2026 &ndash; 2026 clp135</p>
+            <span class="footer-inline-icons">
+        <a href="https://discord.com/invite/8YdPsbAjqb"
+          class="discord-link"
+          target="_blank" rel="noopener noreferrer"
+          aria-label="Discord 서버로 이동">
+          <svg xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="1.6em" height="1.6em"
+              fill="currentColor" role="img" aria-hidden="true">
+            <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025 13.2 13.2 0 0 0-3.257 1.011.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/ucpc__official/"
+          class="instagram-link"
+          target="_blank" rel="noopener noreferrer"
+          aria-label="Instagram 계정으로 이동">
+          <svg xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="1.6em" height="1.6em"
+              fill="currentColor" role="img" aria-hidden="true">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/groups/ucpc.korea"
+          class="facebook-link"
+          target="_blank" rel="noopener noreferrer"
+          aria-label="facebook 서버로 이동">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1.6em" height="1.6em" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+          viewBox="0 0 14222 14222"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+            <style type="text/css">
+              .fil0 {fill:#1977F3;fill-rule:nonzero}
+              .fil1 {fill:#FEFEFE;fill-rule:nonzero}
+            </style>
+          </defs>
+          <g id="Layer_x0020_1">
+            <metadata id="CorelCorpID_0Corel-Layer"/>
+            <path class="fil0" d="M14222 7111c0,-3927 -3184,-7111 -7111,-7111 -3927,0 -7111,3184 -7111,7111 0,3549 2600,6491 6000,7025l0 -4969 -1806 0 0 -2056 1806 0 0 -1567c0,-1782 1062,-2767 2686,-2767 778,0 1592,139 1592,139l0 1750 -897 0c-883,0 -1159,548 -1159,1111l0 1334 1972 0 -315 2056 -1657 0 0 4969c3400,-533 6000,-3475 6000,-7025z"/>
+            <path class="fil1" d="M9879 9167l315 -2056 -1972 0 0 -1334c0,-562 275,-1111 1159,-1111l897 0 0 -1750c0,0 -814,-139 -1592,-139 -1624,0 -2686,984 -2686,2767l0 1567 -1806 0 0 2056 1806 0 0 4969c362,57 733,86 1111,86 378,0 749,-30 1111,-86l0 -4969 1657 0z"/>
+          </g>
+          </svg>
+        </a>
+      </span>
+<div style="height: 1rem;"></div>
+
+  <div class="contents footer_contents old_sites">
+    <a href="https://2025.ucpc.me"><img style="height: 1em;" src="./assets/history/2025.svg" alt="UCPC 2025"></a>
+    <a href="https://2024.ucpc.me"><img style="height: 1em;" src="./assets/history/2024.svg" alt="UCPC 2024"></a>
+    <a href="https://2023.ucpc.me"><img style="height: 1em;" src="./assets/history/2023.svg" alt="UCPC 2023"></a>
+    <a href="https://2022.ucpc.me"><img style="height: 1em;" src="./assets/history/2022.svg" alt="UCPC 2022"></a>
+    <a href="https://2021.ucpc.me"><img style="height: 1.6em;" src="./assets/history/2021.svg" alt="UCPC 2021"></a>
+    <a href="https://2020.ucpc.me"><img style="height: 1em;" src="./assets/history/2020.svg" alt="UCPC 2020"></a>
+    <a href="https://2019.ucpc.me"><img style="height: 1.6em;" src="./assets/history/2019.svg" alt="UCPC 2019"></a>
+  </div>
+  
+  <div style="height: 2rem;"></div>
+
+  <div style="height: 2rem; display: flex;">
+    <div style="flex: 1 0 0;"></div>
+    <div style="flex: 0 0 4px; background: var(--ucpc-blue-dark);"></div>
+    <div style="flex: 1 0 0;"></div>
+  </div>
+      </footer>
+    </main>
+    <script src="./app.js?v=session-expand-stable-number" defer></script>
+  </body>
+</html>
