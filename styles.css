@@ -323,7 +323,7 @@ a {
   position: absolute;
   top: -0.25cqw;
   right: -1.25cqw;
-  bottom: 0.25cqw;
+  bottom: -0.25cqw;
   width: 1.25cqw;
   background: var(--color-yellow);
   border: 0.25cqw solid var(--color-black);
@@ -484,6 +484,14 @@ a {
   line-height: inherit;
 }
 
+.session-description h4 {
+  margin: 2.1cqw 0 1.1cqw;
+  font-family: var(--font-bold);
+  font-size: 1.08em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .session-description ul {
   margin: 0;
   padding-left: 2.4cqw;
@@ -491,6 +499,19 @@ a {
 
 .session-description li + li {
   margin-top: 0.8cqw;
+}
+
+.session-description a {
+  display: inline;
+  width: auto;
+  height: auto;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration: underline;
 }
 
 .session-card.is-expanded .session-description {
@@ -762,7 +783,7 @@ html.device-desktop .session-list {
 html.device-desktop .session-list::after {
   top: -2px;
   right: -10px;
-  bottom: 2px;
+  bottom: -2px;
   width: 10px;
   border-width: 2px;
 }
@@ -828,6 +849,10 @@ html.device-desktop .session-description {
 
 html.device-desktop .session-description p {
   margin-bottom: clamp(10px, 1.1cqw, 14px);
+}
+
+html.device-desktop .session-description h4 {
+  margin: clamp(14px, 1.45cqw, 19px) 0 clamp(8px, 0.8cqw, 11px);
 }
 
 html.device-desktop .session-description ul {
@@ -902,4 +927,25 @@ html.device-desktop .old_sites {
   /* 👇 아래 코드를 추가해 줘! */
   display: block;      /* 인라인 속성을 해제해서 부모 그리드/플렉스 정렬에 맞추게 함 */
   object-fit: cover;   /* 사진이 가로나 세로로 찌그러지지 않게 정비율로 채움 */
+}
+
+.logo-photo {
+  padding: 1.8cqw;
+  background: #fff;
+  object-fit: contain;
+}
+
+.ucpc-session-photo {
+  border-radius: 50%;
+  padding: 2.2cqw;
+  background: var(--color-yellow);
+  object-fit: contain;
+}
+
+html.device-desktop .logo-photo {
+  padding: 0.7cqw;
+}
+
+html.device-desktop .ucpc-session-photo {
+  padding: 0.85cqw;
 }
