@@ -259,6 +259,128 @@ a {
   background: var(--color-paper);
 }
 
+.notice-section {
+  padding: 7.25cqw 7.25cqw 0;
+  background: var(--color-paper);
+}
+
+.notice-panel {
+  border: 0.25cqw solid var(--color-black);
+  background: var(--color-card);
+  box-shadow: 0.5cqw 0.5cqw 0 var(--color-black);
+}
+
+.notice-heading {
+  display: flex;
+  align-items: center;
+  gap: 2.1cqw;
+  padding: 3.15cqw 3.45cqw 2.35cqw;
+  border-bottom: 0.25cqw solid var(--color-black);
+  background: var(--color-yellow);
+}
+
+.notice-heading span {
+  flex: 0 0 auto;
+  width: 2.5cqw;
+  height: 2.5cqw;
+  background: var(--color-black);
+  transform: rotate(45deg);
+}
+
+.notice-heading h2 {
+  margin: 0;
+  font-family: var(--font-medium);
+  font-size: 4.05cqw;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.notice-panel ul {
+  margin: 0;
+  padding: 3.25cqw 3.45cqw 3.65cqw 6.4cqw;
+  font-family: var(--font-medium);
+  font-size: 2.85cqw;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.notice-panel li + li {
+  margin-top: 1.6cqw;
+}
+
+.access-section {
+  display: grid;
+  align-items: start;
+  gap: 5.2cqw;
+  padding: 5.4cqw 7.25cqw 0;
+  background: var(--color-paper);
+}
+
+.access-map,
+.access-guide {
+  border: 0.25cqw solid var(--color-black);
+  background: var(--color-card);
+  box-shadow: 0.5cqw 0.5cqw 0 var(--color-black);
+}
+
+.access-map {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+}
+
+.access-map iframe {
+  display: block;
+  width: 100%;
+  height: 54cqw;
+  border: 0;
+  background: var(--color-muted);
+}
+
+.access-map a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 8.2cqw;
+  border-top: 0.25cqw solid var(--color-black);
+  background: var(--color-yellow);
+  font-family: var(--font-medium);
+  font-size: 2.8cqw;
+  font-weight: 500;
+}
+
+.access-guide dl {
+  margin: 0;
+  padding: 3.45cqw;
+}
+
+.access-guide dl > div + div {
+  margin-top: 3.4cqw;
+  padding-top: 3.2cqw;
+  border-top: 0.25cqw solid var(--color-rule);
+}
+
+.access-guide dt {
+  margin: 0 0 1.4cqw;
+  color: var(--color-black);
+  font-family: var(--font-bold);
+  font-size: 3.15cqw;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.access-guide dd {
+  margin: 0;
+  font-family: var(--font-medium);
+  font-size: 2.55cqw;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.access-guide dd + dd {
+  margin-top: 1.35cqw;
+}
+
 .current-program {
   border-bottom: 1.17cqw solid var(--color-yellow);
 }
@@ -742,6 +864,87 @@ html.device-desktop .info-place {
 
 html.device-desktop .program {
   padding: clamp(54px, 6.2cqw, 80px) clamp(56px, 7cqw, 90px);
+}
+
+html.device-desktop .notice-section {
+  padding: clamp(54px, 6.2cqw, 80px) clamp(56px, 7cqw, 90px) 0;
+}
+
+html.device-desktop .notice-panel {
+  border-width: 2px;
+  box-shadow: 4px 4px 0 var(--color-black);
+}
+
+html.device-desktop .notice-heading {
+  gap: clamp(14px, 1.5cqw, 20px);
+  padding: clamp(20px, 2.2cqw, 28px) clamp(24px, 2.7cqw, 36px) clamp(16px, 1.8cqw, 24px);
+  border-bottom-width: 2px;
+}
+
+html.device-desktop .notice-heading span {
+  width: clamp(14px, 1.45cqw, 19px);
+  height: clamp(14px, 1.45cqw, 19px);
+}
+
+html.device-desktop .notice-heading h2 {
+  font-size: 2.2cqw;
+}
+
+html.device-desktop .notice-panel ul {
+  padding: clamp(24px, 2.8cqw, 36px) clamp(28px, 3.2cqw, 42px) clamp(28px, 3.2cqw, 42px) clamp(50px, 5.2cqw, 68px);
+  font-size: 1.35cqw;
+  line-height: 1.55;
+}
+
+html.device-desktop .notice-panel li + li {
+  margin-top: clamp(10px, 1.1cqw, 14px);
+}
+
+html.device-desktop .access-section {
+  align-items: stretch;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(28px, 3.2cqw, 42px);
+  padding: clamp(38px, 4.3cqw, 56px) clamp(56px, 7cqw, 90px) 0;
+}
+
+html.device-desktop .access-map,
+html.device-desktop .access-guide {
+  border-width: 2px;
+  box-shadow: 4px 4px 0 var(--color-black);
+}
+
+html.device-desktop .access-map iframe {
+  height: 100%;
+  min-height: clamp(320px, 32cqw, 420px);
+}
+
+html.device-desktop .access-map a {
+  min-height: clamp(48px, 4.9cqw, 64px);
+  border-top-width: 2px;
+  font-size: 1.28cqw;
+}
+
+html.device-desktop .access-guide dl {
+  padding: clamp(24px, 2.8cqw, 36px);
+}
+
+html.device-desktop .access-guide dl > div + div {
+  margin-top: clamp(20px, 2.1cqw, 28px);
+  padding-top: clamp(18px, 1.9cqw, 25px);
+  border-top-width: 2px;
+}
+
+html.device-desktop .access-guide dt {
+  margin-bottom: clamp(8px, 0.9cqw, 12px);
+  font-size: 1.55cqw;
+}
+
+html.device-desktop .access-guide dd {
+  font-size: 1.15cqw;
+}
+
+html.device-desktop .access-guide dd + dd {
+  margin-top: clamp(8px, 0.9cqw, 12px);
 }
 
 html.device-desktop .section-heading {
